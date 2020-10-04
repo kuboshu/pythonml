@@ -1,4 +1,5 @@
 FROM ubuntu:20.04
+LABEL maintainer="kuboshu83"
 ENV DEBIAN_FRONTEND noninteractive
 ARG INSTALLDIR_PYOCR="/app/ocr"
 RUN apt-get update && \
