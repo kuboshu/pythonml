@@ -46,3 +46,6 @@ ADD https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/eng.tra
 
 # 作業ディレクトリの作成
 RUN mkdir -p /home/share
+
+# デフォルトでPythonシェルを起動
+CMD ["python"]
