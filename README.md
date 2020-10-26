@@ -59,5 +59,5 @@ DockerfileをビルドしたイメージはDockerHubにありますので、そ�
 [DockerHubのリンク](https://hub.docker.com/repository/docker/kuboshu83/pythonml)
 
 # GitHub
-DockerfileはGitHubに後悔していますので、こちらを参照ください。
+DockerfileはGitHubに公開していますので、こちらを参照ください。
 [GitHubのリンク](https://github.com/kuboshu/pythonml)
