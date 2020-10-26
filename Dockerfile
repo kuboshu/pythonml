@@ -1,4 +1,5 @@
 FROM ubuntu:20.04
+LABEL maintainer="kuboshu83"
 ENV DEBIAN_FRONTEND noninteractive
 ARG INSTALLDIR_PYOCR="/app/ocr"
 RUN apt-get update && \
@@ -45,3 +46,6 @@ ADD https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/eng.tra
 
 # 作業ディレクトリの作成
 RUN mkdir -p /home/share
+
+# デフォルトでPythonシェルを起動
+CMD ["python"]

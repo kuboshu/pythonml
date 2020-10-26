@@ -2,12 +2,36 @@
 機械学習を利用するために必要なライブラリをインストールしたコンテナイメージを作成するためのDockerfileです。
 Tensorflow, Pytorchは容量が大きいので必要がなければDockerfileでコメントアウトしてください。
 
-## イメージバージョン
+## [イメージバージョン]
 v0.0.0<br>
 ※サンプルプログラムの追加はマイナーバージョンで対応します。
 
-## ベースOS
+## [ベースOS]
 ubntu20.04
+
+## [使用例]
+使用例のコマンドは全てpythonml:v0.0.0での場合です。適宜使用してるイメージバージョンに置き換えてください。
+
+### Dockerイメージのビルド
+build.shを実行するとDockerfileからDockerイメージがビルドされます。
+
+```bash
+> ./build.sh
+```
+
+### Jupyter Labを使用する
+ローカルのカレントディレクトリ下にshare/を作成して以下のコマンドを実行すると、share/を共有した状態でDockerコンテナが起動します。
+
+```bash
+> mkdir share
+# ローカルの$(pwd)/shareとDockerコンテナ状の/home/shareが同期した状態でコンテナが起動します。
+> docker run --rm -it -p 8888:8888 -w /home/share -v $(pwd)/share:/home/share pythonml:v0.0.0 /usr/local/bin/jupyter lab --ip=0.0.0.0 --port 8888 --allow-root
+```
+
+### コンテナのPythonシェルを起動する
+ ```bash
+ > docker run --rm -it pythonml:v0.0.0
+ ```
 
 # インストール済みツール
 2020/10/1現在のバージョン情報です。イメージビルドのタイミングによってはバージョンが異なる場合があります。
@@ -32,3 +56,8 @@ Notebookで書いたPythonの機械学習用ライブラリのサンプルプロ
 
 # DockerHub
 DockerfileをビルドしたイメージはDockerHubにありますので、そちらからもコンテナイメージを使用できます。
+[DockerHubのリンク](https://hub.docker.com/repository/docker/kuboshu83/pythonml)
+
+# GitHub
+DockerfileはGitHubに後悔していますので、こちらを参照ください。
+[GitHubのリンク](https://github.com/kuboshu/pythonml)
