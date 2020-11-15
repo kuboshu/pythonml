@@ -39,10 +39,9 @@ RUN apt-get update && \
     # ~~~~Tesseractのインストール~~~~~
     apt-get install -y libleptonica-dev tesseract-ocr && \
     # ~~~~PyOCRのインストール~~~~~
-    pip install pyocr
-
-ADD https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/jpn.traineddata /usr/local/share/tessdata
-ADD https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/eng.traineddata /usr/local/share/tessdata
+    pip install pyocr && \
+    mkdir -p /usr/local/share/tessdata/ && \
+    curl https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/jpn.traineddata -sS -L -o /usr/share/tesseract-ocr/4.00/tessdata/jpn.traineddata 
 
 # 作業ディレクトリの作成
 RUN mkdir -p /home/share
