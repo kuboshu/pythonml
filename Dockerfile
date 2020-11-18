@@ -41,10 +41,13 @@ RUN apt-get update && \
     # ~~~~PyOCRのインストール~~~~~
     pip install pyocr && \
     mkdir -p /usr/local/share/tessdata/ && \
-    curl https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/jpn.traineddata -sS -L -o /usr/share/tesseract-ocr/4.00/tessdata/jpn.traineddata 
-
-# 作業ディレクトリの作成
-RUN mkdir -p /home/share
+    curl https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/jpn.traineddata -sS -L -o /usr/share/tesseract-ocr/4.00/tessdata/jpn.traineddata && \
+    # ~~~~MeCabのインストール~~~~
+    apt-get install -y mecab libmecab-dev mecab-ipadic && \
+    pip install --no-binary :all: mecab-python3 && \
+    pip install neologdn && \
+    #~~~~作業ディレクトリの作成~~~~
+    mkdir -p /home/share
 
 # デフォルトでPythonシェルを起動
 CMD ["python"]

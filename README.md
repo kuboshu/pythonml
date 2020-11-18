@@ -3,8 +3,11 @@
 Tensorflow, Pytorchは容量が大きいので必要がなければDockerfileでコメントアウトしてください。
 
 ## [イメージバージョン]
-v0.0.3<br>
+v0.1.0<br>
 ※サンプルプログラムの追加はマイナーバージョンで対応します。
+
+### 変更点
+自然言語処理用にMeCabをインストールした。
 
 ## [ベースOS]
 ubntu20.04
@@ -25,12 +28,12 @@ build.shを実行するとDockerfileからDockerイメージがビルドされ�
 ```bash
 > mkdir share
 # ローカルの$(pwd)/shareとDockerコンテナ状の/home/shareが同期した状態でコンテナが起動します。
-> docker run --rm -it -p 8888:8888 -w /home/share -v $(pwd)/share:/home/share pythonml:v0.0.0 /usr/local/bin/jupyter lab --ip=0.0.0.0 --port 8888 --allow-root
+> docker run --rm -it -p 8888:8888 -w /home/share -v $(pwd)/share:/home/share pythonml:[イメージバージョン] /usr/local/bin/jupyter lab --ip=0.0.0.0 --port 8888 --allow-root
 ```
 
 ### コンテナのPythonシェルを起動する
  ```bash
- > docker run --rm -it pythonml:v0.0.0
+ > docker run --rm -it pythonml:[イメージバージョン]
  ```
 
 # インストール済みツール
@@ -50,9 +53,11 @@ build.shを実行するとDockerfileからDockerイメージがビルドされ�
 - pyocr 0.7.2
 - opencv-python 4.4.0.44
 - optuna 2.1.0
+- mecab
 
 # サンプルプログラム
-Notebookで書いたPythonの機械学習用ライブラリのサンプルプログラムを/home/samples/に用意していますので、参考になれば幸いです。サンプルは都度追加していきます。
+Notebookで書いたPythonの機械学習用ライブラリのサンプルプログラムを/home/samples/に用意していますので、参考になれば幸いです。サンプルは都度追加していきます。<br>
+※サンプルは現在作成中なので、まだリリースされていません。
 
 # DockerHub
 DockerfileをビルドしたイメージはDockerHubにありますので、そちらからもコンテナイメージを使用できます。
